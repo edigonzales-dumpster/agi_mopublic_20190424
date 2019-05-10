@@ -18,6 +18,9 @@ java -jar /Users/stefan/apps/ili2pg-4.0.0/ili2pg-4.0.0.jar \
 --createscript agi_mopublic_20190424.sql
 ```
 ### GRETL
+
+TODO: Query anpassen wegen Grundbuch und Gemeinde. Dafür soll/muss aber erst das Modell "admininistrative Einteilungen" auf die Edit-DB gezügelt werden.
+
 ```
 export DB_URI_SOGIS=jdbc:postgresql://192.168.50.8:5432/edit
 export DB_USER_SOGIS=ddluser
@@ -37,7 +40,8 @@ export DB_PWD_PUB=ddluser
 
 
 ## Einführung
-- QML in AGDI anpassen wegen `art_txt` -> `art`.
+- QML in AGDI anpassen wegen `art_txt` -> `art`. NICHT NOTWENDIG: Ist nur ein String und keine Aufzähltyp. -> 
+- TODO: gretljobs Branch muss wieder angepasst werden.
 - Auf Pub und Edit resp. auch noch sogis-DB?
 - PLZ/Ortschaft muss auch in Edit-DB importiert werden. Varianten? Im Gretl-Skript einfach 2x importieren? Ich habe den Job bei mir einfach so laufen lassen. Scheint tadellos zu funktionieren.
 (

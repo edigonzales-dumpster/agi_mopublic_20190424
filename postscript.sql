@@ -48,6 +48,8 @@ CREATE INDEX mopublic_mopublic_grenzpunkt_bfsnr_idx ON agi_mopublic_pub.mopublic
 CREATE INDEX mopublic_grundstueck_art_idx ON agi_mopublic_pub.mopublic_grundstueck USING btree (art);
 CREATE INDEX mopublic_grundstueck_art_txt_idx ON agi_mopublic_pub.mopublic_grundstueck USING btree (art_txt);
 CREATE INDEX mopublic_grundstueck_bfsnr_idx ON agi_mopublic_pub.mopublic_grundstueck USING btree (bfs_nr);
+CREATE INDEX mopublic_grundstueck_grundbuch_idx ON agi_mopublic_pub.mopublic_grundstueck USING btree (grundbuch);
+CREATE INDEX mopublic_grundstueck_gemeinde_idx ON agi_mopublic_pub.mopublic_grundstueck USING btree (gemeinde);
 
 CREATE INDEX mopublic_strassenachse_strassenname_idx ON agi_mopublic_pub.mopublic_strassenachse USING btree (strassenname);
 CREATE INDEX mopublic_strassenachse_bfsnr_idx ON agi_mopublic_pub.mopublic_strassenachse USING btree (bfs_nr);

@@ -16,7 +16,7 @@ INTERLIS 2.3;
  * !!==============================================================================
  */
 !!@ technicalContact=agi@bd.so.ch
-MODEL SO_MOpublic_20190424 (de)
+MODEL SO_AGI_MOpublic_20190424 (de)
 AT "http://www.geo.so.ch/models/AGI"
 VERSION "2018-04-30"  =
   IMPORTS GeometryCHLV95_V1,Units,CHAdminCodes_V1;
@@ -35,9 +35,9 @@ VERSION "2018-04-30"  =
       Orientierung = -270.00 .. 90.00 [Units.Angle_Degree];
 
     CLASS Bodenbedeckung =
-      /** Bodenbedeckungsart (Text-Repräsentation)
+      /** Bodenbedeckungsart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Gemeindenummer (BfS-Nummer) der Gemeinde in welcher das Objekt liegt.
        */
       BFS_Nr : MANDATORY CHAdminCodes_V1.CHMunicipalityCode;
@@ -56,9 +56,9 @@ VERSION "2018-04-30"  =
     END Bodenbedeckung;
 
     CLASS Bodenbedeckung_proj =
-      /** Bodenbedeckungsart (Text-Repräsentation)
+      /** Bodenbedeckungsart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Gemeindenummer (BfS-Nummer) der Gemeinde in welcher das Objekt liegt.
        */
       BFS_Nr : MANDATORY CHAdminCodes_V1.CHMunicipalityCode;
@@ -77,9 +77,9 @@ VERSION "2018-04-30"  =
     END Bodenbedeckung_proj;
 
     CLASS Einzelobjekt_Flaeche =
-      /** Einzelobjektart (Text-Repräsentation)
+      /** Einzelobjektart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Gemeindenummer (BfS-Nummer) der Gemeinde in welcher das Objekt liegt.
        */
       BFS_Nr : MANDATORY CHAdminCodes_V1.CHMunicipalityCode;
@@ -98,9 +98,9 @@ VERSION "2018-04-30"  =
     END Einzelobjekt_Flaeche;
 
     CLASS Einzelobjekt_Linie =
-      /** Einzelobjektart (Text-Repräsentation)
+      /** Einzelobjektart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Gemeindenummer (BfS-Nummer) der Gemeinde in welcher das Objekt liegt.
        */
       BFS_Nr : MANDATORY CHAdminCodes_V1.CHMunicipalityCode;
@@ -194,9 +194,9 @@ VERSION "2018-04-30"  =
     END Strassenachse;
 
     CLASS Einzelobjekt_Punkt =
-      /** Einzelobjektart (Txt-Repräsentation)
+      /** Einzelobjektart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Gemeindenummer (BfS-Nummer) der Gemeinde in welcher das Objekt liegt.
        */
       BFS_Nr : MANDATORY CHAdminCodes_V1.CHMunicipalityCode;
@@ -218,9 +218,9 @@ VERSION "2018-04-30"  =
       /** Geometrie
        */
       Geometrie : MANDATORY GeometryCHLV95_V1.Coord2;
-      /** Fixpunkttyp (Text-Repräsentation)
+      /** Fixpunkttyp (Integer-Repräsentation)
        */
-      Typ_txt : MANDATORY TEXT*100;
+      Typ : MANDATORY TEXT*100;
       /** Nummerierungsbereichidentifikator
        */
       NBIdent : MANDATORY TEXT*12;
@@ -239,9 +239,9 @@ VERSION "2018-04-30"  =
       /** Höhengenauigkeit
        */
       Hoehengenauigkeit : Genauigkeit;
-      /** Punktzeichen (Text-Repräsentation)
+      /** Punktzeichen (Integer-Repräsentation)
        */
-      Punktzeichen_txt : MANDATORY TEXT*100;
+      Punktzeichen : MANDATORY TEXT*100;
       /** Positionierungspunkt für Beschriftung
        */
       Pos : GeometryCHLV95_V1.Coord2;
@@ -389,9 +389,9 @@ VERSION "2018-04-30"  =
       /** Ist Lagebestimmung zuverlässig? ja/nein
        */
       Lagezuverlaessigkeit : MANDATORY BOOLEAN;
-      /** Art des Punktzeichens (Text-Repräsentation)
+      /** Art des Punktzeichens (Integer-Repräsentation)
        */
-      Punktzeichen_txt : MANDATORY TEXT*100;
+      Punktzeichen : MANDATORY TEXT*100;
       /** Symbolorientierung
        */
       Symbolorientierung : Orientierung;
@@ -422,9 +422,9 @@ VERSION "2018-04-30"  =
       /** Grundbuchnummer
        */
       Nummer : MANDATORY TEXT*15;
-      /** Grundstücksart (Text-Repräsentation)
+      /** Grundstücksart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Fläche des Grundstückes in m2
        */
       Flaechenmass : MANDATORY 0 .. 9999999999;
@@ -452,12 +452,12 @@ VERSION "2018-04-30"  =
       /** Datum der Nachführung durch Geometer
        */
       Nachfuehrung : INTERLIS.XMLDate;
-      /** Name des Grundbuchs (= Grundbuchkreis)
-       */
-      Grundbuch : MANDATORY TEXT*255;
       /** Name der Gemeinde
        */
       Gemeinde : MANDATORY TEXT*255;
+      /** Name des Grundbuchs (Grundbuchkreises)
+       */
+      Grundbuch : MANDATORY TEXT*255;
     END Grundstueck;
 
     CLASS Grundstueck_proj =
@@ -470,9 +470,9 @@ VERSION "2018-04-30"  =
       /** Grundbuchnummer
        */
       Nummer : MANDATORY TEXT*15;
-      /** Grundstücksart (Text-Repräsentation)
+      /** Grundstücksart (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Fläche des Grundstückes in m2
        */
       Flaechenmass : MANDATORY 0 .. 9999999999;
@@ -500,12 +500,6 @@ VERSION "2018-04-30"  =
       /** Datum der Nachführung durch Geometer
        */
       Nachfuehrung : INTERLIS.XMLDate;
-      /** Name des Grundbuchs (= Grundbuchkreis)
-       */
-      Grundbuch : MANDATORY TEXT*255;
-      /** Name der Gemeinde
-       */
-      Gemeinde : MANDATORY TEXT*255;
     END Grundstueck_proj;
 
     CLASS Hoheitsgrenzpunkt =
@@ -515,9 +509,9 @@ VERSION "2018-04-30"  =
       /** Nummer des Hoheitsgrenzpunktes
        */
       Nummer : TEXT*20;
-      /** Punktzeichen (Text-Repräsentation)
+      /** Punktzeichen (Integer-Repräsentation)
        */
-      Punktzeichen_txt : MANDATORY TEXT*100;
+      Punktzeichen : MANDATORY TEXT*100;
       /** Schöner Stein? ja/nein
        */
       schoener_Stein : MANDATORY BOOLEAN;
@@ -566,9 +560,9 @@ VERSION "2018-04-30"  =
       /** Valignment
        */
       VAli : MANDATORY INTERLIS.VALIGNMENT;
-      /** Art des Objektnamens, aus Art BB/EO. (Text-Repräsentation)
+      /** Art des Objektnamens, aus Art BB/EO. (Integer-Repräsentation)
        */
-      Art_txt : MANDATORY TEXT*100;
+      Art : MANDATORY TEXT*100;
       /** Herkunft des Objektnames
        */
       Herkunft : MANDATORY (
@@ -650,4 +644,4 @@ VERSION "2018-04-30"  =
 
   END MOpublic;
 
-END SO_MOpublic_20190424.
+END SO_AGI_MOpublic_20190424.
